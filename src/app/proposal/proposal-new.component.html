@@ -9,6 +9,7 @@
                     <div class= "form-group">
                         <label for="customer">Customer Name</label>
                         <input type="text"
+                               class="form-control"
                                id="customer"
                                placeholder="ABC Company"
                                required
@@ -16,22 +17,27 @@
                                #customer='ngModel'
                                [(ngModel)]="proposal.customer"
                         >
-                        <div [hidden]="customer.valid || customer.pristine">
+                        <div [hidden]="customer.valid || customer.pristine"
+                            class='alert alert-danger'
+                        >
                         	Customer name is required
                         </div>
                         
                     </div>
                     
                     <div class= "form-group">
-                        <label for="portfolio_url">portfolio_url</label>
+                        <label for="portfolio_url">Portfolio_url</label>
                         <input type="text"
+                               class="form-control"
                                id="portfolio_url"
                                required
                                name="portfolio_url"
                                #portfolio_url='ngModel'
                                [(ngModel)]="proposal.portfolio_url"
                         >
-                        <div [hidden]="portfolio_url.valid || portfolio_url.pristine">
+                        <div [hidden]="portfolio_url.valid || portfolio_url.pristine"
+                            class='alert alert-danger'
+                        >
                         	A Portfolio_url is required
                         </div>
                         
@@ -40,6 +46,7 @@
                     <div class= "form-group">
                         <label for="tools">Tools that you will use on the project</label>
                         <input type="text"
+                               class="form-control"
                                id="tools"
                                placeholder="Ruby on Rails, Angular"
                                required
@@ -47,7 +54,9 @@
                                #tools='ngModel'
                                [(ngModel)]="proposal.tools"
                         >
-                        <div [hidden]="tools.valid || tools.pristine">
+                        <div [hidden]="tools.valid || tools.pristine"
+                            class='alert alert-danger'
+                        >
                         	A list of tools are required
                         </div>
                         
@@ -56,51 +65,66 @@
                     <div class= "form-group">
                         <label for="estimated_hours">Estimated Hours</label>
                         <input type="number"
+                               class="form-control"
                                id="estimated_hours"
                                required
                                name="estimated_hours"
                                #estimated_hours='ngModel'
                                [(ngModel)]="proposal.estimated_hours"
                         >
-                        <div [hidden]="estimated_hours.valid || estimated_hours.pristine">
+                        <div [hidden]="estimated_hours.valid || estimated_hours.pristine"
+                            class='alert alert-danger'
+                        >
                         	You need to enter your estimated hours for the project
                         </div>
                         
                     </div>
                     
                     <div class= "form-group">
-                        <label for="hourly_rate">Hourly rate</label>
-                        <input type="number"
-                               id="hourly_rate"
-                               required
-                               name="hourly_rate"
-                               #hourly_rate='ngModel'
-                               [(ngModel)]="proposal.hourly_rate"
+                        <label for="hourly_rate">Hourly Rate</label>
+                        <div class="input-group">
+                          <span class="input-group-addon">$</span>    
+                          <input type="number"
+                                   class="form-control"
+                                   id="hourly_rate"
+                                   required
+                                   name="hourly_rate"
+                                   #hourly_rate='ngModel'
+                                   [(ngModel)]="proposal.hourly_rate"
+                          >
+                            
+                        </div>
+                          
+                        <div [hidden]="hourly_rate.valid || hourly_rate.pristine"
+                            class='alert alert-danger'
                         >
-                        <div [hidden]="hourly_rate.valid || hourly_rate.pristine">
                         	You need to enter your hourly rate for the project
                         </div>
                         
                     </div>
                     
                             <div class= "form-group">
-                        <label for="weeks_to_complete">weeks_to_complete</label>
+                        <label for="weeks_to_complete">Weeks_to_Complete</label>
                         <input type="number"
+                               class="form-control"
                                id="weeks_to_complete"
                                required
                                name="weeks_to_complete"
                                #weeks_to_complete='ngModel'
                                [(ngModel)]="proposal.weeks_to_complete"
                         >
-                        <div [hidden]="weeks_to_complete.valid || weeks_to_complete.pristine">
+                        <div [hidden]="weeks_to_complete.valid || weeks_to_complete.pristine"
+                            class='alert alert-danger'
+                        >
                         	You need to enter the weeks you estimate to complete the project
                         </div>
                         
                     </div>
                     
                             <div class= "form-group">
-                        <label for="client_email">client_email</label>
+                        <label for="client_email">Client_Email <em>(Optional)</em></label>
                         <input type="email"
+                               class="form-control"
                                id="client_email"
                                name="client_email"
                                #client_email='ngModel'
@@ -139,7 +163,7 @@
             	I am estimating that it will take {{ proposal.estimated_hours }} hours in 
             	development time to complete. The project should take {{ proposal.weeks_to_complete }} 
             	weeks to complete and with my hourly rate of {{ proposal.hourly_rate }}/hour, 
-            	the estimated total will be {{ proposal.hourly_rate * proposal.estimated_hours }}.</p>
+            	the estimated total will be {{ proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0' }}.</p>
             
             
             	<p>The next step from here is to set up a meeting to finalize the project and 
