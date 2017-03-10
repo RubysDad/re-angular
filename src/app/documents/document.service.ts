@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from '@rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 import { Document } from './document';
 
 @Injectable()
 export class DocumentService {
-    private documentsUrl = 'http://localhost:3001.json';
+    private documentsUrl = 'https://localhost:3001';
     
     constructor(
       private http: Http
@@ -31,5 +31,5 @@ export class DocumentService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-}
+
 }

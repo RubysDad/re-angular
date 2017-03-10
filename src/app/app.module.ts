@@ -31,8 +31,10 @@ import { AppRoutingModule } from './app-routing.module';
     NgbModule.forRoot(),
   ],
   providers: [
-      DocumentService
+    DocumentService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
