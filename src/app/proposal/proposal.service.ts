@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { Document } from './document';
+import { Proposal } from './proposal';
 
 @Injectable()
-export class DocumentService {
-    private documentsUrl = 'https://angular-re-rubysdad.c9users.io:8081/re_documents';
+export class ProposalService {
+    private proposalsUrl = 'https://angular-re-rubysdad.c9users.io:8082/proposals';
     
     constructor(
       private http: Http
     ) {}
     
-    getDocuments(): Observable<Document[]> {
-        return this.http.get(this.documentsUrl)
-                        .map((response: Response) => <Document[]>response.json())
+    getProposals(): Observable<Proposal[]> {
+        return this.http.get(this.proposalsUrl)
+                        .map((response: Response) => <Proposal[]>response.json())
                         .catch(this.handleError);
     }
     

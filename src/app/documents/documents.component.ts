@@ -7,7 +7,7 @@ import { DocumentService } from './document.service';
 	selector: 'documents',
 	templateUrl: 'documents.component.html',
 	styleUrls: ['documents.component.css'],
-	providers: [ DocumentService ]
+	providers: [ DocumentService ],
 })
 export class DocumentsComponent implements OnInit {
 	pageTitle: string = "Document Dashboard"
@@ -16,7 +16,7 @@ export class DocumentsComponent implements OnInit {
 	mode = "Observable";
 
 	constructor(
-		private documentService: DocumentService;
+		private documentService: DocumentService
 	) {}
 
 	ngOnInit() {
@@ -28,7 +28,7 @@ export class DocumentsComponent implements OnInit {
 		this.documentService.getDocuments()
 				.subscribe(
 					documents => this.documents = documents,
-					error => this.errorMessage = <any>error
+					error => this.errorMessage = <any>error,
 				);
 	}
 }
