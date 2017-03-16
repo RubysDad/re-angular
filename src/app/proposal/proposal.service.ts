@@ -18,6 +18,17 @@ export class ProposalService {
                         .catch(this.handleError);
     }
     
+    getProposal(id: number) {
+        return this.http.get(this.proposalsUrl + "/" + id + '.json');
+    }
+    
+    createProposal(proposal) {
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers});
+        return this.http.post(this.proposalsUrl, JSON.stringify(proposal), 
+        {headers: headers}).map((res: Response) => res.json());
+    }
+    
     private handleError (error: Response | any) {
         let errMsg: string;
         if (error instanceof Response) {
